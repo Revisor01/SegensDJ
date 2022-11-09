@@ -6,6 +6,7 @@ Samples ändern:
 - 16 Texte
 - 16 Töne
 - 16 Geräuschumgebungen
+- Normalisieren der Samples
 
 ## Benötigte Hardware
 - RaspberryPi 4 - 8GB Ram
