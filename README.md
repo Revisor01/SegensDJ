@@ -1,6 +1,12 @@
 # SegensDJ
 Repo für die SegensDJ Installation für die Ausstellung Interreligiöse Segensräume.
 
+## ToDo
+Samples ändern:
+- 16 Texte
+- 16 Töne
+- 16 Geräuschumgebungen
+
 ## Benötigte Hardware
 - RaspberryPi 4 - 8GB Ram
 - Pioneer DDJ SB3
