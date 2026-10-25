@@ -1,39 +1,61 @@
-# SegensDJ
-Repo für die SegensDJ Installation für die Ausstellung Interreligiöse Segensräume.
+<h1 align="center">SegensDJ</h1>
 
-## ToDo
-Samples ändern:
-- 16 Texte
-- 16 Töne
-- 16 Geräuschumgebungen
-- Normalisieren der Samples
+<p align="center">
+  Segensworte mischen wie ein DJ —<br>
+  ein Raspberry Pi mit DJ-Controller für die Ausstellung „Interreligiöse Segensräume“.
+</p>
 
-## Benötigte Hardware
-- RaspberryPi 4 - 8GB Ram
-- Pioneer DDJ SB3
-- Boxen bzw. Verstärker anschließbar via 3,5mm Klinke oder direkt über die Soundkarte des Pioneer DDJ SB3
+<p align="center">
+  <img src="https://img.shields.io/badge/Plattform-Raspberry%20Pi%204-red" alt="Plattform">
+  <img src="https://img.shields.io/github/license/Revisor01/SegensDJ" alt="Lizenz">
+</p>
+
+## Worum es geht
+
+Segen ist in vielen Religionen ein Wort, das man jemandem zuspricht. Der
+SegensDJ lässt Besucher:innen einer Ausstellung damit spielen: Auf einem
+DJ-Controller liegen gesprochene Segensworte, Klänge und Geräusche aus
+verschiedenen Traditionen, die sich übereinanderlegen, ausblenden und neu
+mischen lassen.
+
+Das Repository enthält ein fertiges Image für den Raspberry Pi, auf dem die
+DJ-Software Mixxx mit passender Einrichtung für den Controller läuft, dazu
+die Klangdateien.
+
+## Funktionen
+
+- **Fertiges Image** — auf die SD-Karte schreiben, starten, auflegen
+- **36 Klangdateien** — Segensworte, Töne und Geräusche in `Samples/`
+- **Controller vorbereitet** — Mixxx 2.3.3 mit Zuordnung für den
+  Pioneer DDJ-SB3
+- **Fernzugriff** — SSH, VNC und Dateifreigabe (SMB) für die Wartung
+
+## Installation
+
+**Hardware.**
+- Raspberry Pi 4 mit 8 GB RAM
+- Pioneer DDJ-SB3
+- Boxen oder Verstärker, über 3,5-mm-Klinke am Pi oder über die Soundkarte
+  des Controllers
+
 <p float="left">
 <img src="docs/pi4.png" width="32%" height="32%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="docs/sb3.svg" width="40%" height="40%">
 </p>
 
-## Installation
+**Image schreiben.** Wer das Flashen von SD-Karten kennt, nimmt den
+gewohnten Weg. Sonst:
 
-Sollten Sie bereits mit dem Flashen von SD-Karten vertraut sein, nutzen Sie bitte die Methode, die Sie gewohnt sind.
+1. [balenaEtcher](https://etcher.balena.io) installieren.
+2. [`SegensDJ-Pi.zip`](SegensDJ-Pi.zip) herunterladen (liegt in Git LFS).
+3. SD-Karte anschließen, Etcher öffnen, „Flash from file“ und die Datei
+   wählen.
+4. SD-Karte wählen, bestätigen, dass nichts Wichtiges darauf liegt, und
+   „Flash“ klicken.
 
-1. Installieren Sie [Balena Etcher](https://www.balena.io/etcher/)
-1. Laden Sie die Datei [`SegensDJ-Pi.zip`](SegensDJ-Pi.zip) herunter
-1. Verbinden Sie ihre SD Karte mit dem Computer
-1. Öffnen Sie Balena Etcher
-1. Wählen Sie 'Flash from File' und im Anschluss die heruntergeladene Datei aus
-1. Wählen Sie die SD Karte und bestätigen Sie, dass Sie nichts Relevantes überschreiben
-1. Klicken Sie auf Flash und warten Sie bis der Prozess abgeschlossen ist
-
-## Netzwerkeinrichtung
-Nach Abschluss des Vorgangs sollte die Partition boot gemounted sein.<br />
-Wenn die Partition nicht erscheint einfach die SD-Karte aus- und wieder einstecken.<br />
-Erstellen Sie die Datei ```wpa_supplicant.conf``` in der Partition.<br />
-Der Inhalt der Datei:
+**WLAN einrichten.** Nach dem Schreiben erscheint die Partition `boot`
+(sonst die Karte einmal aus- und wieder einstecken). Dort die Datei
+`wpa_supplicant.conf` anlegen:
 
 ```
 country=DE
@@ -45,42 +67,60 @@ network={
        key_mgmt=WPA-PSK
 }
 ```
-Im Anschluss die SD Karte in den Pi stecken und den Pi starten. Der Pi sollte nun im Netzwerk verfügbar sein.
 
-**Bitte nach der Einrichtung die voreingestellten Passwörter ändern** (SSH: `passwd`, VNC: `vncpasswd`). Die Werte unten sind die Vorgaben des Images und damit öffentlich.
+Dann die Karte in den Pi stecken und starten; er meldet sich im WLAN.
 
+**Zugriff.** Für beide Wege braucht es die IP-Adresse des Pi.
 
-## SSH Zugriff
-Für SSH Zugriff wird die IP benötigt.<br />
+- **SSH:** `ssh pi@<IP>`, Benutzer `pi`, Passwort `mixxx`.
+- **VNC:** bei Bedarf per SSH starten mit
+  `sudo systemctl start vncserver@1.service`, dann im VNC-Client
+  `<IP>:5901` mit dem Passwort `mixxxpi`. Geeignet sind etwa
+  [VNC Viewer](https://www.realvnc.com/de/connect/download/viewer/),
+  [TightVNC](https://www.tightvnc.com/download.php) oder
+  [UltraVNC](https://uvnc.com/).
 
-Nutzername: ```pi```<br />
-Passwort: ```mixxx```<br />
-Terminal: ```ssh pi@<IP>```
+**Bitte nach der Einrichtung beide Passwörter ändern** (`passwd` und
+`vncpasswd`). Es sind die Vorgaben des Images und damit öffentlich.
 
-## VNC Zugriff
-Für VNC Zugriff wird die IP benötigt.<br />
-VNC stellt einen virtuellen Desktop zur Verfügung um auf die Oberfläche zugreifen zu können.<br /><br />
-Der VNC Server muss via SSH gestartet werden wenn benötigt. Mit ```ssh pi@<IP>``` auf den Pi verbinden: ```sudo systemctl start vncserver@1.service```<br />
-Wenn der Service ohne Fehler gestartet wird, kann im Anschluss mit einem VNC-Client eine Verbindung hergestellt werden.<br />
-Mögliche Clients:<br />
-- [VNC Viewer](https://www.realvnc.com/de/connect/download/viewer/) (Win, Mac, ios, Android, Linux)
-- [TightVNC](https://www.tightvnc.com/download.php) (Win, Linux)
-- [UltraVNC](https://uvnc.com/) (Windows)
+## Bekannte Eigenheiten
 
-Im VNC-Client ```<IP>:5901``` mit dem Passwort: ```mixxxpi```.
+- In `/home/pi/.mixxx/controllers/Pioneer-DDJ-SB3-scripts.js` ist Zeile 981
+  auskommentiert, weil Mixxx sonst beim Start einen Fehler meldet.
+  Funktioniert das Deck nicht richtig, ist das die erste Stelle zum
+  Nachsehen.
+- Startet der VNC-Server automatisch mit, erkennt Mixxx das Deck nicht.
+  Deshalb wird er nur bei Bedarf von Hand gestartet.
 
-## Hinweis
-- Im Script /home/pi/.mixxx/controllers/Pioneer-DDJ-SB3-scripts.js wurde Zeile 981 auskommentiert um Fehler beim Start zu umgehen. Sollte das Deck nicht korrekt funktionieren, ist das der erste Punkt an dem geschaut werden sollte.
+## Versionen
 
-- Den VNC Server im Autostart laufen zu lassen führt dazu, dass das Deck nicht erkannt wird. Eventuell muss die Bootreihenfolge des VNC Server angepasst werden.
+Das Image ist als [Release 0.1.0-beta](https://github.com/Revisor01/SegensDJ/releases)
+markiert. Gegenüber dem Ausgangsimage enthält es die Systemupdates vom
+08.11.2022, Mixxx 2.3.3 (wegen des Controllers), VNC-Server,
+SMB-Freigabe und einen Zeitserver.
 
-## Lizenz und Herkunft
-- Lizenz: [MIT](LICENSE)
-- Basiert auf dem Image von: [fayaaz/mixxx-pi-gen](https://github.com/fayaaz/mixxx-pi-gen)
+## Aufbau
 
-## Änderungen
-- Updates mit Stand: 08.11.2022 eingespielt
-- Mixxx auf 2.3.3 geändert (Kompatibilität mit dem Deck)
-- VNC Server hinzugefügt
-- SMB Zugriff hinzugefügt
-- Time Server hinzugefügt
+```
+SegensDJ
+├── SegensDJ-Pi.zip   — fertiges Image für die SD-Karte (Git LFS)
+├── Samples/          — Klangdateien (WAV)
+└── docs/             — Bilder für diese Seite
+```
+
+## Mitmachen
+
+Fehlermeldungen und Vorschläge sind willkommen — gern als
+[Issue](https://github.com/Revisor01/SegensDJ/issues). Sicherheitslücken
+bitte vertraulich melden, wie in [SECURITY.md](SECURITY.md) beschrieben;
+die Grundsätze für Beiträge stehen in [CLAUDE.md](CLAUDE.md).
+
+## Lizenz
+
+[MIT](LICENSE). Das Image basiert auf
+[fayaaz/mixxx-pi-gen](https://github.com/fayaaz/mixxx-pi-gen).
+
+## Kontakt
+
+Pastor Simon Luthe · [mail@simonluthe.de](mailto:mail@simonluthe.de) ·
+[simonluthe.de](https://simonluthe.de)
