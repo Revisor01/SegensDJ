@@ -6,6 +6,10 @@
 </p>
 
 <p align="center">
+  <b>Deutsch</b> · <a href="README.en.md">English</a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Plattform-Raspberry%20Pi%204-red" alt="Plattform">
   <img src="https://img.shields.io/github/license/Revisor01/SegensDJ" alt="Lizenz">
 </p>
@@ -113,7 +117,8 @@ SegensDJ
 Fehlermeldungen und Vorschläge sind willkommen — gern als
 [Issue](https://github.com/Revisor01/SegensDJ/issues). Sicherheitslücken
 bitte vertraulich melden, wie in [SECURITY.md](SECURITY.md) beschrieben;
-die Grundsätze für Beiträge stehen in [CLAUDE.md](CLAUDE.md).
+siehe
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Lizenz
 
