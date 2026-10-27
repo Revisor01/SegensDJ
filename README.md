@@ -12,15 +12,10 @@
 
 ## Worum es geht
 
-Segen ist in vielen Religionen ein Wort, das man jemandem zuspricht. Der
-SegensDJ lässt Besucher:innen einer Ausstellung damit spielen: Auf einem
-DJ-Controller liegen gesprochene Segensworte, Klänge und Geräusche aus
-verschiedenen Traditionen, die sich übereinanderlegen, ausblenden und neu
-mischen lassen.
-
-Das Repository enthält ein fertiges Image für den Raspberry Pi, auf dem die
-DJ-Software Mixxx mit passender Einrichtung für den Controller läuft, dazu
-die Klangdateien.
+Auf einem DJ-Controller liegen gesprochene Segensworte, Klänge und
+Geräusche aus verschiedenen Traditionen, die Besucher:innen einer Ausstellung
+übereinanderlegen und neu mischen. Das Repository enthält ein fertiges Image
+für den Raspberry Pi mit Mixxx und die Klangdateien.
 
 ## Funktionen
 
