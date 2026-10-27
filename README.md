@@ -90,10 +90,7 @@ Dann die Karte in den Pi stecken und starten; er meldet sich im WLAN.
 ## Versionen
 
 Das Image ist als [Release 0.1.0-beta](https://github.com/Revisor01/SegensDJ/releases)
-markiert. Gegenüber dem Ausgangsimage enthält es die Systemupdates vom
-08.11.2022, Mixxx 2.3.3 (wegen des Controllers), VNC-Server,
-SMB-Freigabe und einen Zeitserver. Was sich wann geändert hat, steht in
-[CHANGELOG.md](CHANGELOG.md).
+markiert. Was sich wann geändert hat, steht in [CHANGELOG.md](CHANGELOG.md).
 
 ## Aufbau
 
