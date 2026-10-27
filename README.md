@@ -6,10 +6,6 @@
 </p>
 
 <p align="center">
-  <b>Deutsch</b> · <a href="README.en.md">English</a>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Plattform-Raspberry%20Pi%204-red" alt="Plattform">
   <img src="https://img.shields.io/github/license/Revisor01/SegensDJ" alt="Lizenz">
 </p>
@@ -101,7 +97,8 @@ Dann die Karte in den Pi stecken und starten; er meldet sich im WLAN.
 Das Image ist als [Release 0.1.0-beta](https://github.com/Revisor01/SegensDJ/releases)
 markiert. Gegenüber dem Ausgangsimage enthält es die Systemupdates vom
 08.11.2022, Mixxx 2.3.3 (wegen des Controllers), VNC-Server,
-SMB-Freigabe und einen Zeitserver.
+SMB-Freigabe und einen Zeitserver. Was sich wann geändert hat, steht in
+[CHANGELOG.md](CHANGELOG.md).
 
 ## Aufbau
 
@@ -116,9 +113,8 @@ SegensDJ
 
 Fehlermeldungen und Vorschläge sind willkommen — gern als
 [Issue](https://github.com/Revisor01/SegensDJ/issues). Sicherheitslücken
-bitte vertraulich melden, wie in [SECURITY.md](SECURITY.md) beschrieben;
-siehe
-[CONTRIBUTING.md](CONTRIBUTING.md).
+bitte vertraulich melden, wie in [SECURITY.md](SECURITY.md) beschrieben.
+Die Grundsätze für Beiträge stehen in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Lizenz
 
